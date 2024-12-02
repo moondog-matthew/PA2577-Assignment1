@@ -1,0 +1,34 @@
+version: '3.9'
+services:
+  database:
+    build:
+      context: ./Containers/database
+    container_name: mongodb
+    ports:
+      - "27017:27017"
+    volumes:
+      - db-data:/data/db
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: mongoadmin
+      MONGO_INITDB_ROOT_PASSWORD: root
+
+  backend:
+    build:
+      context: ./Containers/backend
+    container_name: backend
+    ports:
+      - "3000:3000"
+    depends_on:
+      - database
+
+  frontend:
+    build:
+      context: ./Containers/frontend
+    container_name: frontend
+    ports:
+      - "3001:3000"
+    depends_on:
+      - backend
+
+volumes:
+  db-data:
