@@ -8,3 +8,6 @@ docker-compose down
 
 Github repo:
 https://github.com/moondog-matthew/PA2577-Assignment1
+
+Video: 
+https://youtu.be/pdY3Wo-cwI8
